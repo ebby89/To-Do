@@ -1,12 +1,20 @@
-#show-places {
+/*#show-things{
   display: none;
-}
+}*/
 
-#places {
+#things{
   cursor: pointer;
   color: #0088cc;
 }
 
-#places:hover {
+#things:hover {
   text-decoration: underline;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.outputItem {
+  text-decoration: line-through;
 }

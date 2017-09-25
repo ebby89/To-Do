@@ -1,38 +1,28 @@
 // business logic
-function Place(location, landmarks, timeOfYear, notes) {
-  this.location = location;
-  this.landmarks = landmarks;
-  this.timeOfYear = timeOfYear;
-  this.notes = notes;
+function toDo(item) {
+  this.item = item;
 }
+
 
 // front end logic
 $(document).ready(function() {
-  $("form#new-place").submit(function(event){
+  $("form#new-to-do").submit(function(event){
     event.preventDefault();
 
-    var inputtedLocation = $("input#new-location").val();
-    var inputtedLandmarks = $("input#new-landmarks").val();
-    var inputtedTimeOfYear = $("input#new-timeOfYear").val();
-    var inputtedNotes = $("input#new-notes").val();
+    var inputtedItem = $('input#new-item').val();
 
-    var newPlace = new Place(inputtedLocation, inputtedLandmarks, inputtedTimeOfYear, inputtedNotes);
+    var newToDo = new toDo(inputtedItem);
 
-    $("ul#places").append("<li><span class='place'>" + newPlace.location + "</span></li>");
+    $('ul#outputList').append("<li><span class='clickItem'>" + newToDo.item + "</span></li>");
 
-    $('.place').last().click(function(){
-      $('#show-places').show();
-      $('#show-places h2').text(newPlace.location);
-      $('.location').text(newPlace.location);
-      $('.landmarks').text(newPlace.landmarks);
-      $('.timeOfYear').text(newPlace.timeOfYear);
-      $('.notes').text(newPlace.notes);
+    $('#outputList').children("li").click(function(){
+      $(this).hide();
     });
 
-    $("input#new-location").val("");
-    $("input#new-landmarks").val("");
-    $("input#new-timeOfYear").val("");
-    $("input#new-notes").val("");
+    // $(".btn").on('click', function () {
+    //   $('div#check').append('<input type="checkbox" name="myCheckbox" />' + $("").val());
+    // });
 
+    $('input#new-item').val("");
   });
 });
